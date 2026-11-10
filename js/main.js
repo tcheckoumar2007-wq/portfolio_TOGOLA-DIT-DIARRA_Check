@@ -59,6 +59,82 @@ filterButtons.forEach((button) => button.addEventListener('click', () => {
   updateProjects();
 }));
 
+// Agrandissement des visuels de projets, utilisable à la souris et au clavier.
+const projectImages = document.querySelectorAll('.project-image img, .detail-cover img, .evidence-gallery img');
+let imageViewer;
+let imageViewerImage;
+let imageViewerCaption;
+let imageViewerTrigger;
+
+function createImageViewer() {
+  imageViewer = document.createElement('dialog');
+  imageViewer.className = 'image-viewer';
+  imageViewer.setAttribute('aria-label', 'Agrandissement de l’image');
+
+  const closeButton = document.createElement('button');
+  closeButton.className = 'image-viewer-close';
+  closeButton.type = 'button';
+  closeButton.setAttribute('aria-label', 'Fermer l’image agrandie');
+  closeButton.textContent = '×';
+
+  imageViewerImage = document.createElement('img');
+  imageViewerCaption = document.createElement('p');
+  imageViewerCaption.className = 'image-viewer-caption';
+
+  imageViewer.append(closeButton, imageViewerImage, imageViewerCaption);
+  document.body.append(imageViewer);
+
+  closeButton.addEventListener('click', () => imageViewer.close());
+  imageViewer.addEventListener('click', (event) => {
+    if (event.target === imageViewer) imageViewer.close();
+  });
+  imageViewer.addEventListener('cancel', (event) => {
+    event.preventDefault();
+    imageViewer.close();
+  });
+  imageViewer.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      imageViewer.close();
+    }
+  });
+  imageViewer.addEventListener('close', () => {
+    imageViewerTrigger?.focus();
+    imageViewerTrigger = null;
+  });
+}
+
+function openImageViewer(image) {
+  if (!imageViewer) createImageViewer();
+  imageViewerTrigger = image;
+  imageViewerImage.src = image.currentSrc || image.src;
+  imageViewerImage.alt = image.alt;
+  imageViewerCaption.textContent = image.closest('figure')?.querySelector('figcaption')?.textContent.trim() || image.alt;
+  imageViewer.showModal();
+  imageViewer.querySelector('.image-viewer-close').focus();
+}
+
+projectImages.forEach((image) => {
+  image.tabIndex = 0;
+  image.setAttribute('role', 'button');
+  image.setAttribute('aria-haspopup', 'dialog');
+  image.title = 'Cliquer pour agrandir';
+});
+
+document.addEventListener('click', (event) => {
+  const image = event.target.closest('.project-image img, .detail-cover img, .evidence-gallery img');
+  if (!image) return;
+  event.preventDefault();
+  openImageViewer(image);
+});
+
+document.addEventListener('keydown', (event) => {
+  const image = event.target.closest?.('.project-image img, .detail-cover img, .evidence-gallery img');
+  if (!image || (event.key !== 'Enter' && event.key !== ' ')) return;
+  event.preventDefault();
+  openImageViewer(image);
+});
+
 // Bouton de retour en haut, affiché après le premier écran.
 const backToTop = document.createElement('button');
 backToTop.className = 'back-to-top';

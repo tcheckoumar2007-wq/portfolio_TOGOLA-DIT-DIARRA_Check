@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SAE 2 de BUT 1 GEII : conception, programmation et vérification d’un robot mobile slalomeur.">
+  <title>Robot mobile slalomeur — Check Togola Diarra</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Aller au contenu</a>
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-mark">CT</span><span>PORTFOLIO<span class="brand-sub">BUT GEII · AII</span></span></a>
+    <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+    <nav class="nav"><a href="index.html">Accueil</a><a class="active" href="projets.html">Projets</a><a href="competences.html">Compétences</a><a href="parcours.html">Parcours</a><a href="cv.html">Mon CV</a><a href="contact.html" class="nav-cta">Me contacter ↗</a></nav>
+  </header>
+  <main id="main-content">
+    <section class="page-hero container">
+      <a class="text-link" href="projets.html">← Retour aux projets</a>
+      <p class="eyebrow">SAE 2 · BUT 1 · GEII</p>
+      <h1>Robot mobile<br><span class="accent">slalomeur.</span></h1>
+      <p class="hero-lead narrow">Concevoir et vérifier un robot chenillé capable de repérer les obstacles devant lui, de choisir une direction libre et de se déplacer.</p>
+      <div class="project-meta"><span class="tag">Concevoir</span><span class="tag">Vérifier</span><span class="tag">Arduino</span><span class="tag">KiCad</span></div>
+    </section>
+    <section class="container detail-layout">
+      <div class="detail-main">
+        <div class="detail-cover"><img src="assets/Image_Robot-Slalomeur/robot-slalomeur-fini.jpg" alt="Robot mobile slalomeur réalisé pour la SAE 2 de BUT 1"></div>
+        <section class="detail-section">
+          <h2>01 — Contexte et besoin</h2>
+          <p>Cette SAE de première année porte sur la réalisation en équipe d’un robot mobile sur châssis chenillé. Le robot doit balayer cinq directions devant lui (−90°, −45°, 0°, 45° et 90°), détecter les obstacles, s’orienter vers une voie dégagée puis avancer jusqu’à rencontrer un obstacle.</p>
+          <p>Le système s’appuie notamment sur une carte Arduino Mega, deux moteurs, un capteur de distance orienté par servomoteur et des voyants d’état. Un magnétomètre était prévu pour fournir le cap du robot.</p>
+        </section>
+        <section class="detail-section">
+          <h2>02 — Travaux présentés en équipe</h2>
+          <p>La soutenance, présentée par moi-même et deux coéquipières, documente plusieurs volets du projet. Les documents ne précisent pas la répartition individuelle de chaque tâche ; les réalisations ci-dessous sont donc décrites comme un travail d’équipe.</p>
+          <ul>
+            <li>Conception de la carte et préparation du dossier de fabrication sous KiCad (schéma, PCB et fichiers de fabrication).</li>
+            <li>Élaboration du GRAFCET principal et du GRAFCET synchronisé pour le balayage des cinq directions.</li>
+            <li>Programmation de l’Arduino, assemblage de l’électronique et vérification des soudures.</li>
+            <li>Essais du robot complet et analyse du fonctionnement du magnétomètre.</li>
+          </ul>
+        </section>
+        <section class="detail-section">
+          <h2>03 — Démarche technique</h2>
+          <ol>
+            <li>Définir les fonctions attendues et les phases de fonctionnement du robot.</li>
+            <li>Concevoir la carte électronique et son dossier de fabrication, puis réaliser les soudures.</li>
+            <li>Séparer la séquence principale et le balayage du capteur dans deux GRAFCET synchronisés.</li>
+            <li>Programmer les actions de commande sur Arduino et intégrer les capteurs, moteurs et voyants.</li>
+            <li>Tester l’assemblage et le déplacement du robot.</li>
+          </ol>
+        </section>
+        <section class="detail-section">
+          <h2>04 — Résultats et vérification</h2>
+          <p>La soutenance conclut que le robot est fonctionnel sans le magnétomètre. Le magnétomètre a été défaillant ; le résultat est donc partiel par rapport au système prévu. Les supports ne donnent pas de mesures détaillées ni de protocole d’essai formalisé, et je ne leur attribue pas de résultats supplémentaires.</p>
+          <div class="evidence-gallery">
+            <figure><img src="assets/Image_Robot-Slalomeur/robot-slalomeur-fini.jpg" alt="Robot mobile testé pendant le projet"><figcaption>Robot réalisé et testé par l’équipe.</figcaption></figure>
+            <figure><img src="assets/Image_Robot-Slalomeur/carte-electronique.jpg" alt="Carte électronique assemblée du robot"><figcaption>Carte électronique assemblée.</figcaption></figure>
+            <figure><img class="evidence-document" src="assets/Image_Robot-Slalomeur/schema-electronique.png" alt="Schéma électronique de la carte du robot"><figcaption>Schéma électronique préparé sous KiCad.</figcaption></figure>
+            <figure><img class="evidence-document" src="assets/Image_Robot-Slalomeur/grafcet-principal.png" alt="GRAFCET principal du robot slalomeur"><figcaption>GRAFCET principal de navigation.</figcaption></figure>
+            <figure><img class="evidence-document" src="assets/Image_Robot-Slalomeur/grafcet-scan.png" alt="GRAFCET du balayage des cinq directions"><figcaption>GRAFCET du balayage du capteur.</figcaption></figure>
+            <figure><img class="evidence-document" src="assets/Image_Robot-Slalomeur/programme-arduino.png" alt="Extrait du programme Arduino qui pilote les voyants et le GRAFCET"><figcaption>Extrait du programme Arduino présenté en soutenance.</figcaption></figure>
+          </div>
+        </section>
+        <section class="detail-section">
+          <h2>05 — Compétences mobilisées</h2>
+          <div class="skill-detail-list">
+            <div><b>Concevoir</b><p>Structurer les fonctions du robot, concevoir une carte électronique sous KiCad et organiser le comportement à l’aide de GRAFCET.</p></div>
+            <div><b>Vérifier</b><p>Contrôler les soudures et tester le robot assemblé ; confronter le résultat au fonctionnement visé et constater la défaillance du magnétomètre.</p></div>
+          </div>
+        </section>
+      </div>
+      <aside class="detail-aside">
+        <p class="eyebrow">Fiche projet</p>
+        <h3>SAE 2 · BUT 1</h3>
+        <p>Robot mobile d’évitement d’obstacles, réalisé en équipe.</p>
+        <div class="aside-line"><small>Compétences</small><strong>Concevoir · Vérifier</strong></div>
+        <div class="aside-line"><small>Outils et matériel</small><strong>KiCad · Arduino Mega · capteurs</strong></div>
+        <div class="aside-line"><small>Résultat</small><strong>Robot fonctionnel sans magnétomètre</strong></div>
+        <a class="button button-primary" href="competences.html">Voir les compétences ↗</a>
+      </aside>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><a class="brand footer-brand" href="index.html"><span class="brand-mark">CT</span><span>CHECK TOGOLA DIARRA<span class="brand-sub">Portfolio GEII · AII</span></span></a><p>Portfolio étudiant · 2026–2027</p><a href="contact.html">Contact ↗</a></div></footer>
+  <script src="js/main.js"></script>
+</body>
+</html>
